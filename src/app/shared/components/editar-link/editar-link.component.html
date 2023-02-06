@@ -1,0 +1,52 @@
+<div class="max-w-lg my-0 mx-auto pt-36">
+  <h1 class="text-center">Editar Cadastro</h1>
+  <div class="mb-5">
+    <form [formGroup]="formEdit">
+      <div class="mb-3">
+        <label
+          for="nome"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Nome</label
+        >
+        <input
+          type="text"
+          name="nome"
+          formControlName="nome"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          placeholder="Nome do Link"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label
+          for="url"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >URL do Link</label
+        >
+        <input
+          type="text"
+          name="url"
+          formControlName="url"
+          placeholder="https://www.xxxxxx.com.br"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          required
+        />
+      </div>
+    </form>
+  </div>
+  <div class="flex justify-around">
+    <button
+      (click)="cancelar()"
+      class="text-white bg-cerise-red-400 hover:bg-cerise-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+    >
+      Cancelar
+    </button>
+
+    <button
+      (click)="update()"
+      class="text-white bg-blue-400 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+    >
+      Salvar Cadastro
+    </button>
+  </div>
+</div>

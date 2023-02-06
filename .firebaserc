@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lists-links": {
+      "hosting": {
+        "links": [
+          "lists-links"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lists-links"
+  }
+}

@@ -1,0 +1,152 @@
+<div class="main-content {{ storedTheme }} h-screen pt-16">
+  <div class="flex justify-evenly w-screen pt-5">
+    <div>
+      <div class="botao-teste rounded-full p-3">
+        <button
+          title="Alterar Tema"
+          class="t"
+          mat-icon-button
+          [mat-menu-trigger-for]="menus"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <form name="CorFundo">
+        <mat-menu #menus="matMenu">
+          <div class="flex flex-row items-center">
+            <button
+              (click)="setColor('theme-blue')"
+              class="hover:bg-blumine-100 hover:text-blumine"
+              id="theme-blue"
+              name="fundo"
+              mat-menu-item
+            >
+              Blue
+            </button>
+          </div>
+          <div class="flex flex-row items-center">
+            <button
+              (click)="setColor('theme-blueDark')"
+              class="hover:bg-blumine hover:text-white"
+              id="theme-blueDark"
+              name="fundo"
+              mat-menu-item
+            >
+              Blue Dark
+            </button>
+          </div>
+          <div class="flex flex-row items-center">
+            <button
+              (click)="setColor('theme-pink')"
+              class="hover:bg-cerise-red-100 hover:text-cerise-red-800"
+              id="theme-pink"
+              name="fundo"
+              mat-menu-item
+            >
+              Pink
+            </button>
+          </div>
+          <div class="flex flex-row items-center">
+            <button
+              (click)="setColor('theme-pinkdark')"
+              class="hover:bg-cerise-red-800 hover:text-white"
+              id="theme-pinkdark"
+              name="fundo"
+              mat-menu-item
+            >
+              Pink Dark
+            </button>
+          </div>
+        </mat-menu>
+      </form>
+    </div>
+
+    <div class="py-3">
+      <button
+        title="Adicionar Item"
+        (click)="adicionarLinks()"
+        class="botao-teste text-center mx-4 rounded-lg w-40 p-2 text-base text-white hover:opacity-80"
+      >
+        ADICIONAR
+      </button>
+    </div>
+    <div class="block">
+      <div class="inline relative">
+        <div class="botao-teste rounded-full p-3">
+          <button
+            title="Deslogar"
+            mat-icon-button
+            [mat-menu-trigger-for]="menu"
+          >
+            <mat-icon>account_circle</mat-icon>
+          </button>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-md container px-2 mx-auto">
+    <aside class="">
+      <div class="rounded-lg p-5">
+        <div class="flex flex-col gap-1 text-center items-center">
+          <img class="img-main" src="./assets/img/laion.jpg" alt="" />
+          <p class="font-semibold">John Doe</p>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Links</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let li of links$ | async">
+              <td>
+                <div
+                  class="botao-teste text-center mx-1 my-1 rounded-lg w-60 p-2 text-base text-white font-bold hover:opacity-80"
+                >
+                  <a
+                    class="block h-full w-full no-underline"
+                    href="{{ li.url }}"
+                    target="{{ li.pagina }}"
+                  >
+                    <button class="uppercase font-medium">
+                      {{ li.nome }}
+                    </button></a
+                  >
+                </div>
+              </td>
+              <td class="flex flex-row gap-1">
+                <div
+                  class="botao-teste text-center rounded-full w-12 text-base font-bold text-white hover:opacity-80 p-1"
+                >
+                  <button
+                    title="Excluir Link"
+                    (click)="deletar(li.id)"
+                    class="block h-full w-full no-underline mt-1"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+                <div
+                  class="botao-teste text-center rounded-full w-12 text-base font-bold text-white hover:opacity-80 p-1"
+                >
+                  <button
+                    title="Editar Link"
+                    [routerLink]="'editar/' + li.id"
+                    class="block h-full w-full no-underline mt-1"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </aside>
+  </main>
+</div>
