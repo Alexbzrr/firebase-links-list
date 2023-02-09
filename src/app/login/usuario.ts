@@ -1,7 +1,15 @@
 export class Usuario {
-  image?: string;
   email?: string;
-  nickname?: string;
-  fullName?: string;
   password?: string;
+}
+
+export class INewUser {
+  nickName?: string;
+  fullName?: string;
+  phone?: string;
+  links?: INewLinksUser;
+}
+
+export class INewLinksUser {
+  links?: string[];
 }

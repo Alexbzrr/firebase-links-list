@@ -7,6 +7,8 @@ import { LinksService } from "../shared/services/links.service";
 import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { AuthenticationService } from "../shared/services/authentication.service";
 
 @Component({
   selector: "my-home",
@@ -18,18 +20,23 @@ export class homeComponent implements OnInit {
 
   links$: Observable<ILinks[]>;
   linkId?: string | null;
-
+  dadosUsers$: any;
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private router: Router,
     private linksService: LinksService,
     private toast: ToastrService,
     public dialog: MatDialog,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private angularFirestore: AngularFirestore
   ) {}
 
   ngOnInit() {
     this.links$ = this.linksService.getAllLink();
+
+    this.dadosUsers$ = localStorage.getItem("user");
+
+    console.log(this.dadosUsers$);
   }
 
   adicionarLinks(): void {
@@ -48,41 +55,10 @@ export class homeComponent implements OnInit {
   onLogout(): void {
     this.afAuth.signOut().then(() => this.router.navigate(["/login"]));
   }
-  // toggleColor() {
-  //   switch (this.color) {
-  //     case "blue":
-  //       this.color = "blueDark";
-  //       break;
-  //     case "blueDark":
-  //       this.color = "pink";
-  //       break;
-  //     case "pink":
-  //       this.color = "pinkDark";
-  //       break;
-  //     case "pinkDark":
-  //       this.color = "blue";
-  //       break;
-  //   }
-  //   this.toggleColorBotao();
-  // }
-  // toggleColorBotao() {
-  //   switch (this.botao) {
-  //     case "azul":
-  //       this.botao = "azuldark";
-  //       break;
-  //     case "azuldark":
-  //       this.botao = "rosa";
-  //       break;
-  //     case "rosa":
-  //       this.botao = "rosadark";
-  //       break;
-  //     case "rosadark":
-  //       this.botao = "azul";
-  //       break;
-  //   }
-  // }
   setColor(theme: string) {
     localStorage.setItem("theme-color", theme);
     this.storedTheme = localStorage.getItem("theme-color");
   }
+
+  getUser() {}
 }

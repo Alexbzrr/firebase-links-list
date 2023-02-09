@@ -13,6 +13,7 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
+  dadosUsers$: any;
   usuario: Usuario = new Usuario();
   formLogin: FormGroup;
   constructor(
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   creatNewUser(): void {
     const dialogRef = this.dialog.open(CreateLoginComponent, {
       width: "550px ",
-      height: "400px",
+      height: "650px",
     });
 
     dialogRef.afterClosed().subscribe((result) => {});
@@ -42,8 +43,6 @@ export class LoginComponent implements OnInit {
   login(): void {
     const formLogind = this.formLogin.getRawValue();
     this.authService.SignIn(formLogind).then((response) => {
-      console.log(response);
-
       this.angularFirestore
         .collection("users")
         .doc(response.user.uid)
@@ -55,9 +54,9 @@ export class LoginComponent implements OnInit {
         .get()
         .toPromise()
         .then((res) => {
-          console.log(
-            res.data()
-          ); /*salvar dados do usuário no localstorage pra pegar fácil*/
+          this.dadosUsers$ = res.data();
+          console.log(this.dadosUsers$);
+          /*salvar dados do usuário no localstorage pra pegar fácil*/
         });
 
       this.router.navigate(["/home"]);

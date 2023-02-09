@@ -13,6 +13,7 @@ import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireAuthGuardModule } from "@angular/fire/compat/auth-guard";
 import { FirestoreModule } from "@angular/fire/firestore";
+import { AuthenticationService } from "./shared/services/authentication.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,8 @@ import { FirestoreModule } from "@angular/fire/firestore";
     provideFirebaseApp(() => initializeApp(environment.firebase)),
   ],
   providers: [
+    AngularFireAuthModule,
+    AuthenticationService,
     {
       provide: MatDialogRef,
       useValue: {},

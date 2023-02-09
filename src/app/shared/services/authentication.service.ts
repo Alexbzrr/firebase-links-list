@@ -8,17 +8,26 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthenticationService {
+  userData: any;
   constructor(
     private router: Router,
     private toast: ToastrService,
     public afAuth: AngularFireAuth
-  ) {}
+  ) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem("user", JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem("user"));
+      } else {
+        localStorage.setItem("user", null);
+        JSON.parse(localStorage.getItem("user"));
+      }
+    });
+  }
 
-  SignUp(newUser: Usuario) {
-    return this.afAuth.createUserWithEmailAndPassword(
-      newUser.email,
-      newUser.password
-    );
+  SignUp(email: string, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
   SignIn(newUser: Usuario) {

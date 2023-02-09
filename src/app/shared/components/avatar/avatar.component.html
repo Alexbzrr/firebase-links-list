@@ -1,18 +1,13 @@
 <span
   class="inline-block overflow-hidden border border-blumine rounded-full shadow-md h-14 w-14"
 >
-  <ng-container *ngIf="user?.image; else initials">
-    <img
-      [src]="user?.image"
-      *ngIf="user?.image"
-      class="object-cover rounded-full h-14 w-14"
-      alt=""
-    />
+  <ng-container *ngIf="user; else initials">
+    <img class="object-cover rounded-full h-14 w-14" alt="" />
   </ng-container>
   <ng-template #initials>
     <span class="inline-flex items-center justify-center bg-gray-500 w-14 h-14">
       <span class="text-lg font-medium leading-none text-white">{{
-        user?.fullName
+        user
       }}</span>
     </span>
   </ng-template>
