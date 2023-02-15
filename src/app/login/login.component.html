@@ -21,18 +21,24 @@
             <input
               formControlName="email"
               type="email"
-              placeholder="Correo electronico"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              placeholder="E-mail"
+              class="input-email pl-2 mt-1 block w-full bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
+            <ng-container *ngIf="formLogin.get('email').invalid">
+              <span class="text-red-700 pl-2">E-mail Obrigatório</span>
+            </ng-container>
           </div>
 
           <div class="mt-7">
             <input
               type="password"
               formControlName="password"
-              placeholder="Contraseña"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              placeholder="Senha"
+              class="pl-2 mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
+            <ng-container *ngIf="formLogin.get('password').invalid">
+              <span class="text-red-700 pl-2">Senha Obrigatória</span>
+            </ng-container>
           </div>
 
           <div class="mt-7 flex">

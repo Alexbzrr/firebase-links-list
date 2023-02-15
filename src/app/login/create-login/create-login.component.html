@@ -1,22 +1,26 @@
 <h1 class="text-center">Novo Usuário</h1>
-<div class="mb-5">
+<div class="mb-2">
   <form [formGroup]="formCadUser">
-    <div class="mb-3">
+    <div class="mb-2">
       <label
         for="nome"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >Nome Completo</label
       >
       <input
         type="text"
         name="nome"
         formControlName="fullName"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         placeholder="Nome completo"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('fullName')"
+        msnError="Nome Obrigatório."
+      ></my-campo-error>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
       <label
         for="nome"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -26,12 +30,16 @@
         type="text"
         name="nickName"
         formControlName="nickName"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         placeholder="Como Quer Ser Chamado"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('nickName')"
+        msnError="Nome Obrigatório."
+      ></my-campo-error>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
       <label
         for="phone"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -41,10 +49,14 @@
         type="tel"
         name="phone"
         formControlName="phone"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         placeholder="(xx)x xxxx-xxxx"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('phone')"
+        msnError="phone Obrigatório."
+      ></my-campo-error>
     </div>
     <div class="mb-3">
       <label
@@ -56,10 +68,14 @@
         type="document"
         name="document"
         formControlName="document"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         placeholder="xxx.xxxx.xxx-xx"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('document')"
+        msnError="document Obrigatório."
+      ></my-campo-error>
     </div>
 
     <div class="mb-3">
@@ -72,10 +88,14 @@
         type="email"
         name="email"
         formControlName="email"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         placeholder="email@email.com.br"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('email')"
+        msnError="email Obrigatório."
+      ></my-campo-error>
     </div>
     <div class="mb-3">
       <label
@@ -88,9 +108,13 @@
         name="password"
         formControlName="password"
         placeholder=""
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        class="border text-gray-900 text-sm rounded-lg block w-full p-2.5"
         required
       />
+      <my-campo-error
+        [mostrarErro]="verificarCampoValido('password')"
+        msnError="password Obrigatório."
+      ></my-campo-error>
     </div>
   </form>
 </div>
@@ -103,8 +127,9 @@
   </button>
 
   <button
+    [disabled]="formCadUser.invalid"
     (click)="createLogin()"
-    class="text-white bg-blue-400 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+    class="text-white bg-blue-700 hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
   >
     Adicionar
   </button>

@@ -1,0 +1,18 @@
+input.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
+input.ng-dirty.ng-valid {
+  border: 1px solid green;
+}
+
+input:required:focus:valid {
+  background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg")
+    no-repeat 95% 50% lightgreen;
+  background-size: 25px;
+}
+
+input:focus:invalid {
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg")
+    no-repeat 95% 50% rgba(218, 72, 18, 0.452);
+  background-size: 25px;
+}

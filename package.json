@@ -1,6 +1,11 @@
 {
   "name": "links",
   "version": "0.0.0",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSHY_GIT_PARAMS"
+      }
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,11 +14,7 @@
     "test": "ng test",
     "tailwind": "tailwind -i ./src/styles.scss -o ./src/scss/styles.css --watch"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSHY_GIT_PARAMS"
-      }
-  },
+
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
@@ -34,6 +35,7 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
+
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.7",
@@ -53,4 +55,5 @@
     "tailwindcss": "^2.2.19",
     "typescript": "~4.3.5"
   }
+
 }

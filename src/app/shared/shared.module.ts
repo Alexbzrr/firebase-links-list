@@ -15,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CreateLoginComponent } from "../login/create-login/create-login.component";
 import { RouterModule } from "@angular/router";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CampoErrorComponent } from "./components/campo-error/campo-error.component";
 
 const components = [
   LoginComponent,
@@ -22,6 +23,7 @@ const components = [
   AvatarComponent,
   CadastroComponent,
   CreateLoginComponent,
+  CampoErrorComponent,
 ];
 const modules = [
   CommonModule,

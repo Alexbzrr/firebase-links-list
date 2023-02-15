@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   creatNewUser(): void {
     const dialogRef = this.dialog.open(CreateLoginComponent, {
       width: "550px ",
-      height: "650px",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe((result) => {});

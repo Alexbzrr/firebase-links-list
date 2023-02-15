@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthenticationService } from "../../shared/services/authentication.service";
 import { MatDialogRef } from "@angular/material/dialog";
-import { HttpErrorResponse } from "@angular/common/http";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { UserService } from "../../shared/services/user.service";
 
@@ -26,7 +25,7 @@ export class CreateLoginComponent implements OnInit {
   ngOnInit() {
     this.formCadUser = this.fb.group({
       email: ["", Validators.required],
-      password: ["", Validators.required],
+      password: ["", Validators.required, Validators.minLength(6)],
       nickName: ["", Validators.required],
       fullName: ["", Validators.required],
       phone: ["", Validators.required],
@@ -82,5 +81,13 @@ export class CreateLoginComponent implements OnInit {
 
   cancelar(): void {
     this.dialogRef.close();
+  }
+
+  verificarCampoValido(campo: string) {
+    return (
+      this.formCadUser.get(campo)?.invalid &&
+      (this.formCadUser.get(campo)?.touched ||
+        this.formCadUser.get(campo)?.dirty)
+    );
   }
 }
