@@ -3,4 +3,5 @@ export class ILinks {
   nome?: string;
   url?: string;
   pagina?: string;
+  teste?: string;
 }
