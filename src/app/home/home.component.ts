@@ -33,10 +33,8 @@ export class homeComponent implements OnInit {
 
   ngOnInit() {
     this.links$ = this.linksService.getAllLink();
-
     this.dadosUsers$ = localStorage.getItem("user");
-
-    console.log(this.dadosUsers$);
+    // console.log(this.dadosUsers$);
   }
 
   adicionarLinks(): void {
